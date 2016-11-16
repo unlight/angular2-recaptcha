@@ -22,7 +22,7 @@ export class ReCaptchaService {
     }
 
     public getReady(language: String): Observable<boolean> {
-        if (!this.scriptLoaded) {
+        if (!this.scriptLoaded && document.querySelector('script[src^="https://www.google.com/recaptcha/api.js"]') === null) {
             this.scriptLoaded = true;
             let doc = <HTMLDivElement>document.body;
             let script = document.createElement('script');
